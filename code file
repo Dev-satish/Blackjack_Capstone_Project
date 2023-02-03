@@ -1,0 +1,36 @@
+import random
+import os
+cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+start = input("Type 'y' to start and 'n' to end the game. ")
+if start == 'y':
+    user_cards = random.sample(cards, 2)
+    computer_cards = random.sample(cards, 1)
+    print(user_cards )
+    print(computer_cards )
+    summ = 0
+    for number in user_cards: 
+        summ += number
+    hit = input("want to go for one more card ?, Type 'y' for Yes or 'n' for No. ")
+    while not hit == 'n':
+        hit_card = random.sample(cards, 1)
+        user_cards.append(hit_card[0])
+        print(user_cards)
+        repeat = input("Do you want to hit again ? Type 'y' for yes or 'n' for No. ")
+        if repeat == 'n':
+            hit = 'n'
+            length_of_user_cards = len(user_cards)
+            computer_cards = random.sample(cards, length_of_user_cards)
+            print(computer_cards)
+            os.system('cls')
+            user_sum = 0
+            computer_sum = 0
+            for addition in user_cards:
+                user_sum = user_sum + addition
+            print(f" your cards are {user_cards} = {user_sum} ")
+            for addition in computer_cards:
+                computer_sum = computer_sum + addition
+            print(f" computer's card are {computer_cards} = {computer_sum} ")
+            if user_sum > 21:
+                print("you lost")
+            else:
+                print("you won! ")
